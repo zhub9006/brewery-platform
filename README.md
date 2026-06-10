@@ -4,30 +4,13 @@ Craft brewery operations platform — tools, calculators, and utilities for batc
 
 ## Modules
 
-| Module | Description |
-|--------|-------------|
-| `brewery/calculations.py` | Core brewing math: ABV, IBU (Tinseth), SRM (Morey), gravity correction |
-| `brewery/recipe.py` | Recipe dataclass with derived metrics |
+- `brew_calc.py` — Core brewing calculations (ABV, IBU, SRM, efficiency)
+- `fermentation.py` — Fermentation temperature and yeast activity models
+- `recipe.py` — Recipe builder and batch scaling
 
-## Quick Start
-
-```python
-from brewery.recipe import Recipe, HopAddition, GrainBill
-
-recipe = Recipe(
-    name="Cascade Pale Ale",
-    batch_size_gallons=5.0,
-    original_gravity=1.055,
-    final_gravity=1.012,
-    hops=[HopAddition("Cascade", 5.5, 1.5, 60)],
-    grains=[GrainBill("2-Row Pale", 10.0, 2.0)],
-)
-print(recipe.summary())
-```
-
-## Running Tests
+## Quickstart
 
 ```bash
 pip install -r requirements.txt
-pytest tests/ -v
+python -m pytest tests/
 ```
